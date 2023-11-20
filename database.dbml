@@ -1,0 +1,33 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Project ordering_system {
+    database_type: 'SQLite3'
+    Note: 'A fruit and veg ordering system'
+}
+
+Table product {
+  id integer [PK]
+  name string
+  enabled boolean
+}
+
+Table order {
+  id integer [PK]
+  store integer // foreign key
+  user integer // foreign key
+  date timestamp
+}
+
+Table order_selection {
+  id integer [PK]
+  order integer [ref: < order.id]
+  product integer [ref: < product.id]
+  quantity integer
+  fullfiled boolean
+}
+
+Table store {
+  id integer [PK]
+  name string
+}
