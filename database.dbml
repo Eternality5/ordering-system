@@ -9,6 +9,9 @@ Project ordering_system {
 Table product {
   id integer [PK]
   name string
+  description text
+  before_tax_price decimal
+  gst_applicable boolean
   enabled boolean
 }
 
@@ -24,7 +27,7 @@ Table order_selection {
   order integer [ref: < order.id]
   product integer [ref: < product.id]
   quantity integer
-  fullfiled boolean
+  fulfilled boolean
 }
 
 Table store {
